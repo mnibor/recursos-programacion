@@ -155,3 +155,30 @@ LANGUAGE_CODE = 'es-ar'
 # en la constante TIME_ZONE colocar la ciudad en la que nos encontramos
 
 TIME_ZONE = 'America/Buenos_Aires'
+
+##########################################################################
+# CAMBIAR LA CONTRASEÑA DE UN USUARIO EXISTENTE DESDE LA CONSOLA
+##########################################################################
+
+PRIMERO: Abre una terminal o línea de comandos en el directorio raíz de tu proyecto Django.
+
+SEGUNDO: Ejecuta el siguiente comando para abrir la consola interactiva de Django:
+        python manage.py shell
+
+TERCERO: Una vez en la consola interactiva de Django, importa el modelo del usuario administrador y busca el usuario cuya contraseña deseas cambiar. Puedes hacerlo con el siguiente código:
+
+        from django.contrib.auth.models import User
+        user = User.objects.get(username='nombre_de_usuario')
+
+Asegúrate de reemplazar 'nombre_de_usuario' por el nombre de usuario real del usuario administrador cuya contraseña deseas cambiar.
+
+CUARTO: Ahora puedes cambiar la contraseña del usuario utilizando el método "set_password" y guardando los cambios en la base de datos:
+
+        user.set_password('nueva_contraseña')
+        user.save()
+
+Asegúrate de reemplazar 'nueva_contraseña' por la nueva contraseña que deseas establecer.
+
+QUINTO: Si todo se realizó correctamente, la contraseña del usuario se habrá actualizado en la base de datos.
+
+Recuerda que estos pasos asumen que estás utilizando el modelo de usuario predeterminado proporcionado por Django. Si has personalizado el modelo de usuario, deberás ajustar el código en consecuencia.
