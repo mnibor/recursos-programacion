@@ -182,3 +182,35 @@ Asegúrate de reemplazar 'nueva_contraseña' por la nueva contraseña que deseas
 QUINTO: Si todo se realizó correctamente, la contraseña del usuario se habrá actualizado en la base de datos.
 
 Recuerda que estos pasos asumen que estás utilizando el modelo de usuario predeterminado proporcionado por Django. Si has personalizado el modelo de usuario, deberás ajustar el código en consecuencia.
+
+##########################################################################
+# COMO IMPLEMENTAR CRISPY FORMS BOOTSTRAP 5
+##########################################################################
+
+PRIMERO: Instalar la librería crispy-bootstrap5
+
+        pip install crispy-bootstrap5
+
+SEGUNDO: En settings.py agregar crispy-bootstrap5 a INSTALLED_APPS
+
+        INSTALLED_APPS = (
+            ...
+            'crispy_forms',
+            'crispy_bootstrap5',
+            ...
+        )
+
+TERCERO: En settings.py agregar estas dos lineas adicionales (se pueden agregar despues de INSTALLED_APPS):
+
+        CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+        CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+CUARTO: Para utilizar crispy-bootstrap5, en un formulario debes agregar este template tag:
+
+        {% load crispy_forms_tags %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
